@@ -86,12 +86,14 @@
 <b>Pistas:</b>
 
 <ul>
+
+  <li><input type="checkbox" id="pistas-1-item" /> <label for="pistas-1-item">O Usuário deverá selecionar utilizando os números quais personagens irão correr.</label></li>
   <li><input type="checkbox" id="pistas-1-item" /> <label for="pistas-1-item">Os personagens irão correr em uma pista aleatória de 5 rodadas</label></li>
   <li><input type="checkbox" id="pistas-2-item" /> <label for="pistas-2-item">A cada rodada, será sorteado um bloco da pista que pode ser uma reta, curva ou confronto</label>
     <ul>
-      <li><input type="checkbox" id="pistas-2-1-item" /> <label for="pistas-2-1-item">Caso o bloco da pista seja uma RETA, o jogador deve jogar um dado de 6 lados e somar o atributo VELOCIDADE, quem vencer ganha um ponto</label></li>
-      <li><input type="checkbox" id="pistas-2-2-item" /> <label for="pistas-2-2-item">Caso o bloco da pista seja uma CURVA, o jogador deve jogar um dado de 6 lados e somar o atributo MANOBRABILIDADE, quem vencer ganha um ponto</label></li>
-      <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Caso o bloco da pista seja um CONFRONTO, o jogador deve jogar um dado de 6 lados e somar o atributo PODER, quem perder, perde um ponto</label></li>
+      <li><input type="checkbox" id="pistas-2-1-item" /> <label for="pistas-2-1-item">Caso o bloco da pista seja uma RETA, cada jogador deve jogar um dado de 6 lados e somar o atributo VELOCIDADE, o maior vence. Caso a diferença dos resultados for maior ou igual a 3, o ganhador pega um "turbo", somando dois pontos!</label></li>
+      <li><input type="checkbox" id="pistas-2-2-item" /> <label for="pistas-2-2-item">Caso o bloco da pista seja uma CURVA, cada jogador deve jogar um dado de 6 lados e somar o atributo MANOBRABILIDADE, quem vencer ganha um ponto</label></li>
+      <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Caso o bloco da pista seja um CONFRONTO, cada jogador deve jogar um dado de 6 lados e somar o atributo PODER, o maior vence. Se a diferença dos resultados for maior ou igual a 3, o perdedor é atingido por uma bomba, perdendo dois pontos. Caso contrário, o perdedor é atingido por um casco, perdendo somente 1 ponto.</label></li>
       <li><input type="checkbox" id="pistas-2-3-item" /> <label for="pistas-2-3-item">Nenhum jogador pode ter pontuação negativa (valores abaixo de 0)</label></li>
     </ul>
   </li>

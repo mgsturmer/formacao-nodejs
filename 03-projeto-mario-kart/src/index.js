@@ -49,11 +49,42 @@ async function logRollResult(characterName, block, diceResult, attribute) {
   console.log(`${characterName} 🎲 rolou um dado de ${block} ${diceResult} + ${attribute} = ${diceResult + attribute}`);
 }
 
+async function playRace(character1, character2) {
+  do {
+    await playRaceEngine(character1, character2);
+
+    if (character1.PONTOS < 0 && character2.PONTOS >= 0) {
+      character1.PONTOS = 0;
+      break;
+    } else if (character2.PONTOS < 0 && character1.PONTOS >= 0) {
+      character2.PONTOS = 0;
+      break;
+    }
+  } while (character1.PONTOS <= 0 && character2.PONTOS <= 0);
+
+  await declareWinner(character1, character2);
+}
+
+function standIns(character1, character2){
+  console.log("-----------------------------");
+  console.log("Resultado parcial:");
+  console.log(`${character1.NOME}: ${character1.PONTOS} ponto(s)`);
+  console.log(`${character2.NOME}: ${character2.PONTOS} ponto(s)`);
+  console.log("-----------------------------");  
+}
+
 async function playRaceEngine(character1, character2) {
   for (let round = 1; round <= 5; round++) {
+    
+    if (round > 1) {
+      standIns(character1, character2);
+    }
+
     console.log(`🏁 Rodada ${round}`);
     let block = await getRandomBlock();
     console.log(`Bloco: ${block}`);
+
+
 
     let diceResult1 = await rollDice();
     let diceResult2 = await rollDice();
@@ -146,7 +177,6 @@ function listCharacters() {
   const player2 = await selectCharacter("Escolha o segundo personagem: ", player1);
   
   console.log(`🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando...\n`);
-  await playRaceEngine(player1, player2);
-  await declareWinner(player1, player2);
+  await playRace(player1, player2);
   rl.close();
 })();
